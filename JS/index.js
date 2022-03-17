@@ -4,7 +4,7 @@ const body = document.getElementsByTagName('body')[0];
 // console.log(tag);
 
 
-console.log(window.location.pathname.split("/"));
+// console.log(window.location.pathname.split("/"));
 
 
 
@@ -21,13 +21,21 @@ window.onload = function(){
             loadPage("about");
             loadScript("about");
             break;
-        }        
+        }    
+        case "cgu":{
+            loadPage("cgu");
+            break;
+        } 
+        case "api":{
+            loadPage("api");
+            break;
+        }     
         default:{
             loadPage("404");
             break;
         }
     }//fin switch
-    console.log(document.querySelectorAll(".nav__item"));
+    // console.log(document.querySelectorAll(".nav__item"));
     document.querySelectorAll(".nav__item").forEach((item)=>
 
     item.addEventListener("click", function(){
@@ -38,9 +46,11 @@ window.onload = function(){
         if(path == "home")
         {
             window.history.pushState("","",BaseURL);
+            // window.location.reload(true)
             return;
         }
         window.history.pushState("","",BaseURL+path);
+        // window.location.reload(true)
     })
     
     )
