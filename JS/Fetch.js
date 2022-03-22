@@ -19,3 +19,23 @@ function getCategories($url){
 }
 getCategories("categories.php")
 console.log("-------------------------")
+
+// let elCategory
+// function getElCategory($url){
+//     fetch( BaseFetch + $url ) 
+//     .then(function(res){
+
+//         if(res.ok){
+//             return res.json();
+//         }
+//     })
+//     .then(function(data){
+//         // console.log('data')
+//         // console.log(data)
+//         elCategory = data
+//         return data
+//     })
+//     .catch(function(err){
+//         serverInaccessible()
+//     });
+// }
