@@ -17,11 +17,15 @@ function getElCategory($url){
         }
     })
     .then(function(data){
-        console.log('data')
-        console.log(data)
-        data.meals.forEach((item)=>
-        console.log(item)
-        )
+        // console.log('data')
+        // console.log(data)
+        data.meals.forEach(function(item){    
+            // console.log(item.strMeal )
+            // console.log(item.strMealThumb )
+            // console.log(item.idMeal)
+            renderCategory(item.strMeal,item.strMealThumb)
+
+        })
 
         return 
     })
@@ -29,7 +33,10 @@ function getElCategory($url){
         console.error('fetch function fail')
     });
 }
-function renderCategory(){
-    
+function renderCategory($title,$thumb){
+    let objectCategory = document.createElement('div')
+    objectCategory.classList.add('objectCategory')
+    objectCategory.innerHTML = `${$title } +  ${$thumb} `;
+    document.getElementById('categoryElement').appendChild(objectCategory) 
 }
 getElCategory('filter.php?c='+new URLSearchParams(document.location.search).get("c"))
