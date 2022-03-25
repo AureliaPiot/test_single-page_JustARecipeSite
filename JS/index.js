@@ -3,12 +3,9 @@ const body = document.getElementsByTagName('body')[0];
 
 // console.log(window.location.pathname.split("/"));
 window.addEventListener('popstate', function(event){
-
-    console.log('EVENT')
-    console.log(event.state);
-
+    // console.log('EVENT')
+    // console.log(event);
     router()
-    
     
 })//eventListener popstate 
 // (quand on utilise le "pushState", popstate permet de detecter les changement d'url)
@@ -66,7 +63,14 @@ function router(){
 
             // console.log(window.location)
             break
-        }     
+        }
+        case "meal":{
+            loadPage("meal");
+            loadScript("meal");
+
+            console.log(window.location)
+            break
+        }          
         default:{
             loadPage("404");
             break;

@@ -1,7 +1,3 @@
-// dans les fichier script charger dynamiquement, il ne faut pas declerer de variable ( et surment ni de fonction (a tester))
-// il execute le script a son chargement, et le re-execute a son rechargement,vu qu'il est enregistrer dans le cache
-// window.location.reload(true) permet de palier a cet effet
-// mais recharge la page
 console.log('HOME');
     
 setTimeout(function(){
@@ -37,8 +33,7 @@ setTimeout(function(){
             loadScript("category");
             
             window.history.pushState("","",BaseURL+"category?c="+path);
-            // window.location.reload(true)
-            console.log(BaseURL+"category?c="+path)
+            // console.log(BaseURL+"category?c="+path)
 
         })
                 

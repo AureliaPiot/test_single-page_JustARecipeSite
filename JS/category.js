@@ -1,13 +1,12 @@
 // let params = new URLSearchParams(document.location.search);
-// let category = params.get("c"); // is the string "Jonathan"
+// let category = params.get("c"); 
 // console.log("category")
 console.log(new URLSearchParams(document.location.search).get("c"))
 
-// setTimeout(function(){
-//     getElCategory('list.php?c='+category);
-//     console.log(getElCategory('list.php?c='+category));
-//     console.log(elCategory)
-// },200)
+document.getElementsByClassName('titles')[0].innerHTML=`<h1 class="category_title">${new URLSearchParams(document.location.search).get("c")}</h1>`
+
+
+
 function getElCategory($url){
     fetch( BaseFetch + $url ) 
     .then(function(res){
@@ -17,15 +16,10 @@ function getElCategory($url){
         }
     })
     .then(function(data){
-        // console.log('data')
         // console.log(data)
         data.meals.forEach(function(item){    
-            // console.log(item.strMeal )
-            // console.log(item.strMealThumb )
-            // console.log(item.idMeal)
             renderCategory(item.strMeal,item.strMealThumb)
-
-        })
+        })// foreach
 
         return 
     })
@@ -33,10 +27,29 @@ function getElCategory($url){
         console.error('fetch function fail')
     });
 }
+
 function renderCategory($title,$thumb){
     let objectCategory = document.createElement('div')
-    objectCategory.classList.add('objectCategory')
-    objectCategory.innerHTML = `${$title } +  ${$thumb} `;
+    objectCategory.classList.add('objectCategory','show_Onlad')
+
+    objectCategory.innerHTML = `
+    <img src="${$thumb}" alt="${$title}"/>
+    <p>${$title}</p>
+    `;
+    objectCategory.addEventListener('click',function(){
+        window.history.pushState("","",BaseURL+"meal?m="+$title.replaceAll(' ','_'));
+        loadPage("meal");
+        loadScript("meal");
+    })
+
     document.getElementById('categoryElement').appendChild(objectCategory) 
 }
+
+
 getElCategory('filter.php?c='+new URLSearchParams(document.location.search).get("c"))
+
+setTimeout(function(){
+    document.getElementById('previous').addEventListener('click',function(){
+        history.back()
+    })
+},200)
