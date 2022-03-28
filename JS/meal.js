@@ -66,6 +66,12 @@ function renderMeal($object){
     let groupElement = document.createElement('div');
         groupElement.classList.add('group-element')
 // --    
+    let ingredientsElement =document.createElement('div');
+        ingredientsElement.classList.add('ingredients')
+// --    
+
+    let ingredientsTitle = document.createElement('h5')
+        ingredientsTitle.innerHTML=`<i class="fa fa-list-ul"></i><i class="fas fa-weight"></i>`;
 
     let listIngredient = document.createElement('ul');
         listIngredient.classList.add('list-ingredient')
@@ -79,7 +85,7 @@ function renderMeal($object){
             // console.log(ingrt)
             // console.log($object[ingrt])
 
-        listIngredient.innerHTML+=`<li class="ingredient">
+        listIngredient.innerHTML+=`<li class="ingredient_text">
                 <p>${$object[ingrt]}</p>
                 <p>${$object[msIngrt]}</p>
                 </li>
@@ -87,10 +93,19 @@ function renderMeal($object){
 
         }
 // --    
+
+        let instructionsElement = document.createElement('div')
+        instructionsElement.classList.add('instructions')
+
+// --    
+        let instructionsTitle = document.createElement('h5')
+            instructionsTitle.innerHTML=`<i class="fas fa-utensils"></i><i class="fas fa-align-left"></i>`;
+// --    
+
         let instructions = document.createElement('p');
-            instructions.classList.add('instruction')
+            instructions.classList.add('instruction_text')
             instructions.innerHTML=`
-                ${$object.strInstructions}
+                ${$object.strInstructions.replaceAll('.','.<br>')}
             `
 
 // --    
@@ -119,17 +134,18 @@ function renderMeal($object){
 
 // --    
     headMeal.appendChild(titleMeal)
-    // headMeal.appendChild(tags)
     headMeal.appendChild(imgMeal)
     
     document.getElementById('mealElement').appendChild(headMeal);
 
-    // document.getElementById('mealElement').appendChild(imgMeal);
-    // document.getElementById('mealElement').appendChild(titleMeal);
-    // document.getElementById('mealElement').appendChild(tags);
+    ingredientsElement.appendChild(ingredientsTitle);
+    ingredientsElement.appendChild(listIngredient);
 
-    groupElement.appendChild(listIngredient);
-    groupElement.appendChild(instructions);
+    instructionsElement.appendChild(instructionsTitle);
+    instructionsElement.appendChild(instructions);
+
+    groupElement.appendChild(ingredientsElement);
+    groupElement.appendChild(instructionsElement);
 
     document.getElementById('mealElement').appendChild(groupElement);
     document.getElementById('mealElement').appendChild(source);
