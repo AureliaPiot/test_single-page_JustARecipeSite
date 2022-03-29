@@ -37,27 +37,39 @@ setTimeout(function(){
 
         })
                 
-    }
+    }//fin for
     
 },200)
-/* <img src="${allCategories.categories[i].strCategoryThumb}" alt="${allCategories.categories[i].strCategory}"> */
-// HELLO
 
-// document.querySelectorAll(".card-categories").forEach((item)=>
 
-//     item.addEventListener("click", function(e){
-//         // e.preventDefault()
 
-//         const path = item.getAttribute('value');
-//         loadPage(path);
-//         loadScript(path);
-//         if(path == "home")
-//         {
-//             window.history.pushState("","",BaseURL);
-//             // window.location.reload(true)
-//             return;
+
+
+setTimeout(function(){
+   console.log(random)
+   console.log(random.length)
+   for(let i=0;i<random.length;i++){
+    console.log(random[i].meals[0])
+
+   }
+
+    
+},200)
+
+
+
+
+
+// async function renderRandom() {
+//     await getRandom()
+//         .then(
+//         function(){
+//             console.log(random)
+
 //         }
-//         window.history.pushState("","",BaseURL+"category?c="+path);
-//         // window.location.reload(true)
-//     })
-// )
+//     );
+//     // console.log(random); 
+//     console.log("random"); 
+
+//   }
+//   renderRandom();

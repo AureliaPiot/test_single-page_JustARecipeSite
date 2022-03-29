@@ -1,8 +1,32 @@
 const BaseFetch ="https://themealdb.com/api/json/v1/1/";
 
 let allCategories
-function getCategories($url){
-    fetch( BaseFetch + $url ) 
+function getCategories(){
+    fetch( BaseFetch + "categories.php" ) 
+    .then(function(res){
+
+        if(res.ok){
+            return res.json();
+        }
+    })
+    .then(function(data){
+        console.log(data)
+        allCategories = data
+    })
+    .catch(function(err){
+        serverInaccessible()
+    });
+}
+getCategories()
+console.log("-------------------------")
+// _______________________________________________
+
+
+// _______________________________________________
+let random =[];
+ function getRandom(){
+    
+    fetch( BaseFetch + "random.php" ) 
     .then(function(res){
 
         if(res.ok){
@@ -11,31 +35,13 @@ function getCategories($url){
     })
     .then(function(data){
         // console.log(data)
-        allCategories = data
+        random.push(data)
     })
     .catch(function(err){
         serverInaccessible()
     });
+
+    }
+for(let i= 0 ; i<4 ; i++){
+    getRandom()
 }
-getCategories("categories.php")
-console.log("-------------------------")
-
-// let elCategory
-// function getElCategory($url){
-//     fetch( BaseFetch + $url ) 
-//     .then(function(res){
-
-//         if(res.ok){
-//             return res.json();
-//         }
-//     })
-//     .then(function(data){
-//         // console.log('data')
-//         // console.log(data)
-//         elCategory = data
-//         return data
-//     })
-//     .catch(function(err){
-//         serverInaccessible()
-//     });
-// }
