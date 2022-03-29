@@ -48,8 +48,8 @@ function renderMeal($object){
         titleMeal.innerHTML = `
         <h3>${$object.strMeal}</h3>
         <div class="tags"> 
-            <p>${$object.strArea}</p>
-            <p>${$object.strCategory}</p>
+            <a href =${BaseURL + "area?a="+ $object.strArea}>${$object.strArea}</a >
+            <a href =${BaseURL + "category?c="+ $object.strCategory }>${$object.strCategory}</a>
         </div>
         `;
 // --    
@@ -81,15 +81,18 @@ function renderMeal($object){
         for(let i=1; i<21; i++){
             ingrt = `strIngredient${i}` ;
             msIngrt = `strMeasure${i}` ;
-
-            // console.log(ingrt)
-            // console.log($object[ingrt])
-
-        listIngredient.innerHTML+=`<li class="ingredient_text">
+            if($object[ingrt] == null || $object[ingrt] ==""){
+            }
+            else{   
+                // console.log(ingrt)
+                console.log($object[ingrt] == '')
+                
+                listIngredient.innerHTML+=`<li class="ingredient_text">
                 <p>${$object[ingrt]}</p>
                 <p>${$object[msIngrt]}</p>
                 </li>
                 `;
+            }
 
         }
 // --    
@@ -133,10 +136,29 @@ function renderMeal($object){
             `;
 
 // --    
+            let introRecipe = document.createElement('div');
+            introRecipe.classList.add('introSection')
+            introRecipe.innerHTML = `<div class="bar"></div><h3>Recipe</h3><div class="bar"></div>`;
+// --    
+            let introSource = document.createElement('div');
+            introSource.classList.add('introSection')
+            introSource.innerHTML = `<div class="bar"></div><h3>Source</h3><div class="bar"></div>`;
+
+// --    
+            let introYoutube = document.createElement('div');
+            introYoutube.classList.add('introSection')
+            introYoutube.innerHTML = `<div class="bar"></div><h3>Youtube</h3><div class="bar"></div>`;
+
+// --    
+
+
+
     headMeal.appendChild(titleMeal)
     headMeal.appendChild(imgMeal)
     
     document.getElementById('mealElement').appendChild(headMeal);
+
+    document.getElementById('mealElement').appendChild(introRecipe);
 
     ingredientsElement.appendChild(ingredientsTitle);
     ingredientsElement.appendChild(listIngredient);
@@ -144,12 +166,19 @@ function renderMeal($object){
     instructionsElement.appendChild(instructionsTitle);
     instructionsElement.appendChild(instructions);
 
+
     groupElement.appendChild(ingredientsElement);
     groupElement.appendChild(instructionsElement);
 
     document.getElementById('mealElement').appendChild(groupElement);
-    document.getElementById('mealElement').appendChild(source);
+
+    document.getElementById('mealElement').appendChild(introYoutube);
+
     document.getElementById('mealElement').appendChild(youtube);
+
+    document.getElementById('mealElement').appendChild(introSource);
+
+    document.getElementById('mealElement').appendChild(source);
 
 
 }

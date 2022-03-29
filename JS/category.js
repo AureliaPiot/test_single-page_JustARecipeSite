@@ -49,11 +49,10 @@ getElCategory('filter.php?c='+new URLSearchParams(document.location.search).get(
 if(document.getElementsByClassName('titles')[0] =='undefined'){
     window.location.reload(true)    
 }
-document.getElementsByClassName('titles')[0].innerHTML=`<h1 class="category_title">${new URLSearchParams(document.location.search).get("c")}</h1>`
-
 
 setTimeout(function(){
     document.getElementById('previous').addEventListener('click',function(){
         history.back()
     })
 },200)
+document.getElementsByClassName('title')[0].innerHTML=`<h1 class="category_title">${new URLSearchParams(document.location.search).get("c")}</h1>`
