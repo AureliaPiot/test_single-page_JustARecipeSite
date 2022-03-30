@@ -1,4 +1,6 @@
-const BaseURL = "http://localhost/dev/perso/projet/API_cuisine/theMealDB/Front_V2/";
+//const BaseURL = "http://localhost/dev/perso/projet/API_cuisine/theMealDB/Front_V2/";
+const BaseURL = "https://aureliapiot.github.io/test_single-page_JustARecipeSite/";
+
 const body = document.getElementsByTagName('body')[0];
 
 // console.log(window.location.pathname.split("/"));
