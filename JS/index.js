@@ -40,8 +40,10 @@ window.onload = function(){
 function router(){
     const path = window.location.pathname.split("/");
     console.log(path);
+    console.log("path");
+    
     //  switch(path[7])
-    switch(path[8])
+    switch(path[2])
     {
         case "":{
             loadPage("home");
