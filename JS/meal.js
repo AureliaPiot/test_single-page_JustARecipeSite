@@ -1,6 +1,6 @@
 console.log(new URLSearchParams(document.location.search).get("m"))
 console.log('MEAL')
-
+console.log(path);
 function getMeal($url){
     fetch( BaseFetch + $url ) 
     .then(function(res){
