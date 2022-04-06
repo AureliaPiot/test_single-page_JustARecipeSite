@@ -48,7 +48,7 @@ function renderMeal($object){
         titleMeal.innerHTML = `
         <h2>${$object.strMeal}</h2>
         <div class="tags"> 
-            <a href =${BaseURL + "area?a="+ $object.strArea}>${$object.strArea}</a >
+            <a href =${BaseURL + "country?c="+ $object.strArea}>${$object.strArea}</a >
             <a href =${BaseURL + "category?c="+ $object.strCategory }>${$object.strCategory}</a>
         </div>
         `;

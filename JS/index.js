@@ -1,5 +1,5 @@
-const BaseURL = "http://localhost/dev/perso/projet/API_cuisine/theMealDB/Front_V2/";
-// const BaseURL = "https://aureliapiot.github.io/test_single-page_JustARecipeSite/";
+// const BaseURL = "http://localhost/dev/perso/projet/API_cuisine/theMealDB/Front_V2/";
+const BaseURL = "https://aureliapiot.github.io/test_single-page_JustARecipeSite/";
 // changer pour le githubPage
 const body = document.getElementsByTagName('body')[0];
 
@@ -42,8 +42,8 @@ function router(){
     console.log(path);
     console.log("path");
     
-     switch(path[7])
-    // switch(path[2])
+    //  switch(path[7])
+    switch(path[2])
     {
         case "":{
             loadPage("home");

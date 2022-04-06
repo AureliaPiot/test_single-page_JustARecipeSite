@@ -46,13 +46,7 @@ function renderCategory($title,$thumb){
 
 getElCategory('filter.php?c='+new URLSearchParams(document.location.search).get("c"))
 
-if(document.getElementsByClassName('titles')[0] =='undefined'){
+if(document.getElementsByClassName('titles')[0] == undefined){
     window.location.reload(true)    
 }
 
-setTimeout(function(){
-    document.getElementById('previous').addEventListener('click',function(){
-        history.back()
-    })
-},200)
-document.getElementsByClassName('title')[0].innerHTML=`<h1 class="category_title">${new URLSearchParams(document.location.search).get("c")}</h1>`
