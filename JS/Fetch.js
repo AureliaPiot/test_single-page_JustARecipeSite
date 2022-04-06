@@ -23,7 +23,7 @@ console.log("-------------------------")
 
 
 // _______________________________________________
-let random =[];
+let randomMeals =[];
  function getRandom(){
     
     fetch( BaseFetch + "random.php" ) 
@@ -35,7 +35,7 @@ let random =[];
     })
     .then(function(data){
         // console.log(data)
-        random.push(data)
+        randomMeals.push(data)
     })
     .catch(function(err){
         serverInaccessible()
@@ -44,4 +44,27 @@ let random =[];
     }
 for(let i= 0 ; i<4 ; i++){
     getRandom()
-}
+};
+
+// _______________________________________________
+let allCountry;
+ function getCountry(){
+    
+    fetch( BaseFetch + "list.php?a=list" ) 
+    .then(function(res){
+
+        if(res.ok){
+            return res.json();
+        }
+    })
+    .then(function(data){
+        console.log('data')
+        console.log(data)
+        allCountry = data
+    })
+    .catch(function(err){
+        serverInaccessible()
+    });
+
+    };
+getCountry();

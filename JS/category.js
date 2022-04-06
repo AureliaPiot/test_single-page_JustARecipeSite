@@ -28,7 +28,7 @@ function getElCategory($url){
 
 function renderCategory($title,$thumb){
     let objectCategory = document.createElement('div')
-    objectCategory.classList.add('objectCategory','show_Onlad')
+    objectCategory.classList.add('card','objectCategory','show_Onlad','card')
 
     objectCategory.innerHTML = `
     <img src="${$thumb}" alt="${$title}"/>

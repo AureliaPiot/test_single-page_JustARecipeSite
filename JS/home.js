@@ -1,57 +1,45 @@
 console.log('HOME');
-    
+
+// --------------------RANDOM
+
+
 setTimeout(function(){
-    // console.log(allCategories.categories.length)
-    for(let i=0;i<allCategories.categories.length;i++){
-        // console.log(allCategories.categories[i])
+//    console.log(randomMeals);
+//    console.log(randomMeals.length);
+   for(let i=0;i<randomMeals.length;i++){
+       let card = document.createElement('div');
+       card.setAttribute('value',randomMeals[i].meals[0].strMeal.replaceAll(' ','_'))
+       card.classList.add('card','card_rMeal');
 
-        let card = document.createElement('div');
-        // card.setAttribute('href',`${BaseURL}category?c=${allCategories.categories[i].strCategory}`)
-        card.setAttribute('value',`${allCategories.categories[i].strCategory}`)
+       let image = document.createElement('img');
+       image.setAttribute('src',randomMeals[i].meals[0].strMealThumb);
+       image.setAttribute('alt',randomMeals[i].meals[0].strMeal);
+       image.classList.add('card_rImg')
 
-        card.classList.add('show_Onlad','card-categories');
-        
+       let title = document.createElement('p');
+       title.classList.add('card_rTitle');
+       title.innerText=randomMeals[i].meals[0].strMeal;
 
-        card.innerHTML=`
+       card.appendChild(image);
+       card.appendChild(title);
 
-            <h2>${allCategories.categories[i].strCategory} </h2>
-        `;
 
-        let image = document.createElement('img');
-        image.setAttribute('src',`${allCategories.categories[i].strCategoryThumb}`)
-        // <p>${allCategories.categories[i].strCategoryDescription.split('.')[0]} </p>
-        card.appendChild(image)
-        document.getElementById('categories').appendChild(card)
+       document.getElementById('randoms').appendChild(card)
+    //    console.log(document.getElementById('randoms'));
+    // console.log(randomMeals[i].meals[0]);
 
-        card.addEventListener("click", function(){
+    card.addEventListener("click", function(){
 
         console.log('test')
 
             const path = card.getAttribute('value');
-            // const path = 'category';
-            loadPage("category");
-            loadScript("category");
+            loadPage("meal");
+            loadScript("meal");
             
-            window.history.pushState("","",BaseURL+"category?c="+path);
-            // console.log(BaseURL+"category?c="+path)
-
+            window.history.pushState("","",BaseURL+"meal?m="+path);
         })
-                
-    }//fin for
-    
-},200)
 
-
-
-
-
-setTimeout(function(){
-   console.log(random)
-   console.log(random.length)
-   for(let i=0;i<random.length;i++){
-    console.log(random[i].meals[0])
-
-   }
+   }//endfor
 
     
 },200)
@@ -73,3 +61,105 @@ setTimeout(function(){
 
 //   }
 //   renderRandom();
+
+// --------------------COUNTRY
+
+
+console.log('COUNTRY');
+console.log(allCountry);
+
+setTimeout(function(){
+    console.log(allCountry)
+    for(let i=0;i<allCountry.meals.length;i++){
+        // console.log(allCategories.categories[i])
+
+        let card = document.createElement('div');
+        card.setAttribute('value',`${allCountry.meals[i].strArea}`)
+
+        card.classList.add('card','card-country','show_Onlad');
+        
+        let text = document.createElement('p');
+        text.innerHTML=`${allCountry.meals[i].strArea}`;
+
+        let image = document.createElement('img');
+        image.setAttribute('src',`./IMG/flags/${allCountry.meals[i].strArea}.jpg`);
+        image.setAttribute('alt',`${allCountry.meals[i].strArea}`);
+
+        
+        card.appendChild(image)
+        card.appendChild(text)
+
+        document.getElementById('country').appendChild(card)
+
+
+
+        card.addEventListener("click", function(){
+
+        // console.log('test')
+
+            const path = card.getAttribute('value');
+            loadPage("country");
+            loadScript("country");
+            
+            window.history.pushState("","",BaseURL+"country?c="+path);
+        })
+                
+    }//fin for
+    
+},200)
+
+
+
+
+// --------------------CATEGORY
+
+    
+setTimeout(function(){
+    // console.log(allCategories.categories.length)
+    for(let i=0;i<allCategories.categories.length;i++){
+        // console.log(allCategories.categories[i])
+
+        let card = document.createElement('div');
+        card.setAttribute('value',`${allCategories.categories[i].strCategory}`)
+
+        card.classList.add('card','show_Onlad','card-categories');
+        
+        card.innerHTML=`
+            <div class="card-text">
+                <h3>${allCategories.categories[i].strCategory} </h3>
+                <p>${allCategories.categories[i].strCategoryDescription.split('.')[0]}</p>
+            </div>
+
+        `;
+
+        let image = document.createElement('img');
+        image.setAttribute('src',`${allCategories.categories[i].strCategoryThumb}`);
+        image.setAttribute('alt',`${allCategories.categories[i].strCategory}`);
+
+        // <p>${allCategories.categories[i].strCategoryDescription.split('.')[0]} </p>
+        let text = document.createElement('p');
+        text.innerText=allCategories.categories[i].strCategoryDescription.split('.')[0];
+        
+        // card.appendChild(text);
+        card.appendChild(image);
+
+        document.getElementById('categories').appendChild(card);
+
+
+
+        card.addEventListener("click", function(){
+
+        // console.log('test')
+
+            const path = card.getAttribute('value');
+            loadPage("category");
+            loadScript("category");
+            
+            window.history.pushState("","",BaseURL+"category?c="+path);
+        })
+                
+    }//fin for
+    
+},200)
+
+

@@ -1,6 +1,6 @@
-console.log(new URLSearchParams(document.location.search).get("m"))
+// console.log(new URLSearchParams(document.location.search).get("m"))
 console.log('MEAL')
-console.log(path);
+// console.log(path);
 function getMeal($url){
     fetch( BaseFetch + $url ) 
     .then(function(res){
@@ -46,7 +46,7 @@ function renderMeal($object){
     let titleMeal = document.createElement('div');
     titleMeal.classList.add('headText')
         titleMeal.innerHTML = `
-        <h3>${$object.strMeal}</h3>
+        <h2>${$object.strMeal}</h2>
         <div class="tags"> 
             <a href =${BaseURL + "area?a="+ $object.strArea}>${$object.strArea}</a >
             <a href =${BaseURL + "category?c="+ $object.strCategory }>${$object.strCategory}</a>
@@ -112,7 +112,9 @@ function renderMeal($object){
             `
 
 // --    
-        let source = document.createElement('p')
+        let source = document.createElement('a')
+            source.setAttribute('href',$object.strSource);
+            source.setAttribute('target',"blank")
             source.classList.add('source')
             let strsource = $object.strSource
             if($object.strSource == "" || $object.strSource == null){
